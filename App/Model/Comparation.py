@@ -25,30 +25,26 @@ from DISClib.ADT import map as mp
 from DISClib.DataStructures import mapentry as me
 assert config
 
-"""
-En este archivo definimos los TADs que vamos a usar,
-es decir contiene los modelos con los datos en memoria
-
-"""
-
-# -----------------------------------------------------
-# API del TAD Catalogo de Libros
-# -----------------------------------------------------
-
-
-
-# Funciones para agregar informacion al catalogo
-
-
-
-# ==============================
-# Funciones de consulta
-# ==============================
-
-
-
-# ==============================
-# Funciones de Comparacion
-# ==============================
-
-
+def compareMoviesIds(id, entry):
+    """
+    Compara dos ids de peliculas
+    """
+    identry = me.getKey(entry)
+    if (int(id) == int(identry)):
+        return 0
+    elif (int(id) > int(identry)):
+        return 1
+    else:
+        return - 1
+        
+def compareProductionCompanies(id, entry):
+    """
+    Compara dos ids de compañias productoras
+    """
+    identry = me.getKey(entry)
+    if (id == identry):
+        return 0
+    elif (id > identry):
+        return 1
+    else:
+        return -1

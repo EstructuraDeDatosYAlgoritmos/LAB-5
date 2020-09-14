@@ -1,0 +1,55 @@
+{
+    "movies" : {
+        "5": {
+            "budget": "4000000", 
+            "genres": "Crime|Comedy", 
+            "imdb_id": "tt0113101", 
+            "original_language": "en", 
+            "original_title": "Four Rooms", 
+            "overview": "It's Ted the Bellhop's first night on the job...and the hotel's very unusual guests are about to place him in some outrageous predicaments. It seems that this evening's room service is serving up one unbelievable happening after another.", 
+            "popularity": "1.698", 
+            "production_companies": ["Miramax Films"], 
+            "production_countries": "United States of America", 
+            "release_date": "25/12/1995", 
+            "revenue": "4300000", 
+            "runtime": "98", 
+            "spoken_languages": "English", 
+            "status": "Released", 
+            "tagline": "Twelve outrageous guests. Four scandalous requests. And one lone bellhop, in his first day on the job, who's in for the wildest New year's Eve of his life.", 
+            "title": "Four Rooms", 
+            "vote_average": "6.5", 
+            "vote_count": "485", 
+            "production_companies_number": "2", 
+            "production_countries_number": "1", 
+            "spoken_languages_number": "1",
+            "actor1_name": "Tim Roth", 
+            "actor1_gender": "2", 
+            "actor2_name": "Antonio Banderas", 
+            "actor2_gender": "2", 
+            "actor3_name": "Jennifer Beals", 
+            "actor3_gender": "1", 
+            "actor4_name": "Madonna", 
+            "actor4_gender": "1", 
+            "actor5_name": "Marisa Tomei", 
+            "actor5_gender": "1", 
+            "actor_number": "24", 
+            "director_name": "Allison Anders", 
+            "director_gender": "1", 
+            "director_number": "4", 
+            "producer_name": "Lawrence Bender", 
+            "producer_number": "1", 
+            "screeplay_name": "none", 
+            "editor_name": "Margaret Goodspeed"
+        }
+    },
+
+    "production_company" : {
+        "Miramax Films" : { 
+            "movies": [
+                "5"
+            ],  
+            "vote_average": 6.5
+        }
+        
+    }
+}
