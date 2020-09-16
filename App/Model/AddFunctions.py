@@ -56,7 +56,7 @@ def addMovie(catalogo, data: dict):
     if mp.contains(catalogo["movies"], data["id"]):
         movie = mp.get(catalogo["movies"], data["id"])
         movie = me.getValue(movie)
-        movie = {**movie, **data}
+        movie.update(data)
         
     else:
         mp.put(catalogo["movies"], data["id"], data)

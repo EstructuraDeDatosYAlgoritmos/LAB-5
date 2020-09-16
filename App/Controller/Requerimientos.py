@@ -22,11 +22,16 @@
 
 import config
 
-def mainMenu()->None:
-    """
-    Imprime el menu de opciones
-    """
-    print("\nBienvenido")
-    print("1- Cargar Datos")
-    print("2- Descubrir productoras de cine")
-    print("0- Salir")
+from App.Model import SearchFunctions as Search
+from DISClib.ADT import list as lt
+from DISClib.ADT import map as mp
+from DISClib.DataStructures import mapentry as me
+
+def descubrirProductoras(catalogo, Productora):
+    movies = Search.getMoviesByCompany(catalogo, Productora)
+    try:
+        moviesNum = lt.size(movies[0])
+    except:
+        moviesNum = 0
+    
+    return (movies[0],movies[1],moviesNum)

@@ -22,9 +22,9 @@
 import config
 import sys
 
-from App.Controller import LoadData as Load
-from App.View import Menu 
-from App import Const
+from App.View import Menu
+from App.View import InitFunctions as Init
+
 
 
 def main():
@@ -43,9 +43,12 @@ def main():
         
         if len(inputs)>0 and (data or int(inputs[0])<=1):
             if int(inputs[0])==1: #opcion 1
-                catalogo = Load.newCatalogo()
-                Load.loadData(Const.LINKS_DIR,catalogo)
+                catalogo = Init.ejecutarLoadData()
+                data = True
 
+            elif int(inputs[0]) == 2:  #opcion 2
+                Init.ejecutarDescubrirProductoras(catalogo)
+                
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
                 
@@ -54,3 +57,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

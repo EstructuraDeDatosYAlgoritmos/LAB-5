@@ -54,6 +54,14 @@ def iniCatalogo():
     
     return catalogo
 
+
+def newProductionCompany():
+    company = {
+        "movies": lt.newList(PARAMS["listtype"]),
+        "vote_average": 0
+        }
+    return company
+
 def newMovie(data: dict):
         data["id"] = int(data["id"])
         data["budget"] = int(data["budget"])
@@ -95,11 +103,3 @@ def newMovie(data: dict):
         data["producer_number"] = int(data["producer_number"]) 
         data["screeplay_name"] = data["screeplay_name"]
         data["editor_name"] = data["editor_name"]
-
-def newProductionCompany():
-    company = {
-        "movies": lt.newList(PARAMS["listtype"]),
-        "vote_average": 0
-        }
-    return company
-
