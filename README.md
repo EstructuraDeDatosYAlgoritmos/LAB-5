@@ -30,3 +30,6 @@ Este directorio contiene todo el código de base que se entrega para el funciona
 -Test
 Este directorio contiene las pruebas realizadas a los TADs, Estructuras de Datos y Algoritmos.
 
+Kevin Stiven Morales Castro - k.moralesc -  202012752
+Luis Felipe Plazas - l.plazasp - 202013155
+Laura Isabela Martinez Galindo - l.martinezg - 202012613 
