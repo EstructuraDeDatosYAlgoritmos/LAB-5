@@ -53,7 +53,7 @@ def loadCSVFile(link, data, sep=";"):
             cont = 0
             for movie in buffer:
                 cont += 1
+                Add.addMovie(data, movie)
                 if cont == DEV:
                     break
-                Add.addMovie(data, movie)
             print(cont)

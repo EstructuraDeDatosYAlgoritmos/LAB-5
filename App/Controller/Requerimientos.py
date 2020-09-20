@@ -35,3 +35,21 @@ def descubrirProductoras(catalogo, Productora):
         moviesNum = 0
     
     return (movies[0],movies[1],moviesNum)
+
+def descubrirActores(catalogo, actor):
+    movies = Search.getMoviesByActor(catalogo, actor)
+    try:
+        moviesNum = lt.size(movies[0])
+        director = ("", 0)
+        for key in movies[2].keys():
+            if movies[2][key] > director[1]:
+                director = (key, movies[2][key])
+    except:
+        moviesNum = 0
+        director = ("", 0)
+        print(movies[0])
+        print(movies[1])
+        print(movies[2])
+        
+    
+    return (moviesNum,movies[0],movies[1],director)

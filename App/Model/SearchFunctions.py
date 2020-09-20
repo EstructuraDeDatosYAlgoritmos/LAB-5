@@ -47,3 +47,19 @@ def getMoviesByCompany(catalog, companyName):
         return (companyMovies,companyData["vote_average"])
         
     return (None,None)
+
+def getMoviesByActor(catalog, actorName):
+    """
+    Retorna un autor con sus libros a partir del nombre del autor
+    """
+    productionCompany = mp.get(catalog["actor"], actorName)
+    if productionCompany:
+        actorData = me.getValue(productionCompany)
+        actorMovies = lt.newList(PARAMS["listtype"])
+        for i in range(lt.size(actorData["movies"])):
+            movie = getMovie(catalog, lt.getElement(actorData["movies"], i))
+            lt.addLast(actorMovies, movie)
+        
+        return (actorMovies,actorData["vote_average"],actorData["collaborations"])
+        
+    return (None, None, None)

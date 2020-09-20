@@ -1,12 +1,12 @@
+DATA_MOVIES = 329044
 PARAMS = {
-    "numelements" : 329044,
+    "numelements" : DATA_MOVIES,
     "maptype" : 'CHAINING',
     "loadfactor": 1,
     "listtype" : 'ARRAY_LIST'
 }
 
-DEV = 329044
-DATA_MOVIES = 329044
+DEV = DATA_MOVIES
 
 LINKS_DIR = (#contiene los enlaces a los archivos .cvs
     "Data/AllMoviesDetailsCleaned.csv",

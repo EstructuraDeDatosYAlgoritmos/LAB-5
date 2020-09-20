@@ -46,18 +46,55 @@ def addProductionCompany (catalogo, movie) :
 
     companyAvg = company["vote_average"]
     movieAvg = movie["vote_average"]
-    if (movieAvg == 0.0):
+    if (companyAvg == 0.0):
         company["vote_average"] = float(movieAvg)
     else:
         moviesNum = lt.size(company["movies"])
         company["vote_average"] = ((companyAvg*(moviesNum-1)) + float(movieAvg)) / moviesNum
+
+def addActor(catalogo, movie):
+    catalogoActor = catalogo["actor"]
+
+    movieId = movie["id"]
+    actors = lt.newList('ARRAY_LIST')
+    lt.addLast(actors,movie["actor1_name"]) 
+    lt.addLast(actors,movie["actor2_name"]) 
+    lt.addLast(actors,movie["actor3_name"]) 
+    lt.addLast(actors,movie["actor4_name"]) 
+    lt.addLast(actors,movie["actor5_name"]) 
+    
+    for i in range(1,lt.size(actors)+1):
+        actorName = lt.getElement(actors, i)
+        existauthor = mp.contains(catalogoActor, actorName)
+        if existauthor:
+            entry = mp.get(catalogoActor, actorName)
+            actorInfo = me.getValue(entry)
+        else:
+            actorInfo = Schema.newActor()
+            mp.put(catalogoActor, actorName, actorInfo)
+        lt.addLast(actorInfo['movies'], movieId)
+
+        actorAvg = actorInfo["vote_average"]
+        movieAvg = movie["vote_average"]
+        if (actorAvg == 0.0):
+            actorInfo["vote_average"] = float(movieAvg)
+        else:
+            moviesNum = lt.size(actorInfo["movies"])
+            actorInfo["vote_average"] = ((actorAvg * (moviesNum - 1)) + float(movieAvg)) / moviesNum
+        
+        director = movie["director_name"]
+        if director in actorInfo["collaborations"]:
+            actorInfo["collaborations"][director] += 1
+        else:
+            actorInfo["collaborations"][director] = 1
+
 
 def addMovie(catalogo, data: dict):
     if mp.contains(catalogo["movies"], data["id"]):
         movie = mp.get(catalogo["movies"], data["id"])
         movie = me.getValue(movie)
         movie.update(data)
-        
+        addActor(catalogo,movie)
+        addProductionCompany(catalogo, movie)
     else:
         mp.put(catalogo["movies"], data["id"], data)
-        addProductionCompany(catalogo,data)

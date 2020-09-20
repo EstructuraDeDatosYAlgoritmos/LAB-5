@@ -51,6 +51,13 @@ def iniCatalogo():
                                     loadfactor=PARAMS["loadfactor"],
                                     comparefunction=Comp.compareProductionCompanies
                                     )
+    catalogo["actor"] = mp.newMap (
+                                    numelements = PARAMS["numelements"],
+                                    maptype=PARAMS["maptype"],
+                                    loadfactor=PARAMS["loadfactor"],
+                                    comparefunction=Comp.compareActors
+                                    )
+
     
     return catalogo
 
@@ -61,6 +68,14 @@ def newProductionCompany():
         "vote_average": 0
         }
     return company
+
+def newActor():
+    Actor = {
+        "movies": lt.newList(PARAMS["listtype"]),
+        "vote_average": 0,
+        "collaborations": {},
+        }
+    return Actor
 
 def newMovie(data: dict):
         data["id"] = int(data["id"])

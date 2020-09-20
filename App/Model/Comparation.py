@@ -48,3 +48,15 @@ def compareProductionCompanies(id, entry):
         return 1
     else:
         return -1
+
+def compareActors(id, entry):
+    """
+    Compara dos ids de compañias productoras
+    """
+    identry = me.getKey(entry)
+    if (id == identry):
+        return 0
+    elif (id > identry):
+        return 1
+    else:
+        return -1

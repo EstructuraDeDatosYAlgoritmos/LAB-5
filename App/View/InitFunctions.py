@@ -45,3 +45,17 @@ def ejecutarDescubrirProductoras(catalogo):
             print(f"Con una puntuacion de {movie['vote_average']} por {movie['director_name']} \n")
     else:
         print("No hay informacion de esta productora")
+
+def ejecutarDescubrirActores(catalogo):
+    actorName = input("ingrese el nombre del actor o actris: ")
+    actorData = Req.descubrirActores(catalogo,actorName)
+    if actorData[1]:
+        print(f"{actorName} cuenta con {actorData[0]} peliculas y una puntuacion total de {actorData[2]}.")
+        print(f"Ademas, cuenta con {actorData[3][1]} peliculas bajo la direccion de {actorData[3][0]}.")
+        print("Ha actuado en: \n")
+        for i in range(lt.size(actorData[1])):
+            movie = lt.getElement(actorData[1], i)
+            print(f"{movie['title']}")
+            print(f"Por {movie['director_name']} con una puntuacion de {movie['vote_average']} \n")
+    else:
+        print("No hay informacion de esta productora")
