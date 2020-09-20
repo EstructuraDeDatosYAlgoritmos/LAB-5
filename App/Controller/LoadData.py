@@ -37,23 +37,27 @@ def loadData (data_link, data, sep=";"):
     
     startCrono = crono()  #tiempo inicial
 
-    for link in data_link:
+    
         
-            loadCSVFile(link,data,sep)
+    loadCSVFiles(data_link,data,sep)
         
     
     stopCrono = crono()  #tiempo final
     print("Tiempo de ejecución ", stopCrono - startCrono, " segundos")
     
-def loadCSVFile(link, data, sep=";"):
+def loadCSVFiles(link, data, sep=";"):
     dialect = csv.excel()
     dialect.delimiter = sep
-    with open(link, encoding="utf-8-sig") as csvfile:
-            buffer = csv.DictReader(csvfile, dialect=dialect)
+    with open(link[0], encoding="utf-8-sig") as csvfile1:
+        with open(link[1], encoding="utf-8-sig") as csvfile2:
+            buffer = zip(csv.DictReader(csvfile1, dialect=dialect),csv.DictReader(csvfile2, dialect=dialect))
             cont = 0
             for movie in buffer:
+                movieData = movie[0]
+                movieData.update(movie[1])
                 cont += 1
-                Add.addMovie(data, movie)
+                Add.addMovie(data, movieData)
                 if cont == DEV:
                     break
             print(cont)
+

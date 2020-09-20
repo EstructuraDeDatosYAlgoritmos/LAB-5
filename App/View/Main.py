@@ -35,16 +35,18 @@ def main():
     Args: None
     Return: None 
     """
-    data = False
+    dataReady = False
+    catalogo = None
 
     while True:
         Menu.mainMenu() #imprimir el menu de opciones en consola
-        inputs =input('Seleccione una opción para continuar\n') #leer opción ingresada
+        inputs = input('Seleccione una opción para continuar\n') #leer opción ingresada
         
-        if len(inputs)>0 and (data or int(inputs[0])<=1):
-            if int(inputs[0])==1: #opcion 1
+        if len(inputs)>0 and (dataReady or int(inputs[0])<=1):
+            if int(inputs[0]) == 1:  #opcion 1
+                del catalogo
                 catalogo = Init.ejecutarLoadData()
-                data = True
+                dataReady = True
 
             elif int(inputs[0]) == 2:  #opcion 2
                 Init.ejecutarDescubrirProductoras(catalogo)

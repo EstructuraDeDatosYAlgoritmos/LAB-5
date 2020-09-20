@@ -36,30 +36,58 @@ def getMoviesByCompany(catalog, companyName):
     """
     Retorna un autor con sus libros a partir del nombre del autor
     """
-    productionCompany = mp.get(catalog["production_company"], companyName)
-    if productionCompany:
-        companyData = me.getValue(productionCompany)
+    catalogCompany = mp.get(catalog["production_company"], companyName)
+    if catalogCompany:
+        companyData = me.getValue(catalogCompany)
+
+        moviesNum = lt.size(companyData)
+        companyAvg = 0.00
+
         companyMovies = lt.newList(PARAMS["listtype"])
-        for i in range(lt.size(companyData["movies"])):
-            movie = getMovie(catalog, lt.getElement(companyData["movies"], i))
+        for i in range(moviesNum):
+            movie = getMovie(catalog, lt.getElement(companyData, i))
             lt.addLast(companyMovies, movie)
         
-        return (companyMovies,companyData["vote_average"])
+            companyAvg += float(movie["vote_average"])
+            
+        companyAvg = round(companyAvg/moviesNum, 2)
         
-    return (None,None)
+        return (companyMovies,moviesNum,companyAvg)
+        
+    return (None, None, None)
 
 def getMoviesByActor(catalog, actorName):
     """
     Retorna un autor con sus libros a partir del nombre del autor
     """
-    productionCompany = mp.get(catalog["actor"], actorName)
-    if productionCompany:
-        actorData = me.getValue(productionCompany)
+    catalogActor = mp.get(catalog["actor"], actorName)
+    if catalogActor:
+        actorData = me.getValue(catalogActor)
+
+        moviesNum = lt.size(actorData)
+        actorAvg = 0.0
+        collaborator = ("", 0)
+        directors = {}
+
         actorMovies = lt.newList(PARAMS["listtype"])
-        for i in range(lt.size(actorData["movies"])):
-            movie = getMovie(catalog, lt.getElement(actorData["movies"], i))
+        for i in range(lt.size(actorData)):
+            movie = getMovie(catalog, lt.getElement(actorData, i))
             lt.addLast(actorMovies, movie)
+
+            actorAvg += float(movie["vote_average"])
+            directorName = movie["director_name"]
+            
+            if directorName in directors:
+                directors[directorName] += 1
+                
+            else:
+                directors[directorName] = 1
+
+            if directors[directorName] > collaborator[1]:
+                    collaborator = (directorName, directors[directorName])
+
+        actorAvg =round(actorAvg/moviesNum, 2)
         
-        return (actorMovies,actorData["vote_average"],actorData["collaborations"])
+        return (actorMovies,moviesNum,actorAvg,collaborator)
         
-    return (None, None, None)
+    return (None, None, None, None)

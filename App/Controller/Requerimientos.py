@@ -29,27 +29,9 @@ from DISClib.DataStructures import mapentry as me
 
 def descubrirProductoras(catalogo, Productora):
     movies = Search.getMoviesByCompany(catalogo, Productora)
-    try:
-        moviesNum = lt.size(movies[0])
-    except:
-        moviesNum = 0
-    
-    return (movies[0],movies[1],moviesNum)
+    return movies
 
-def descubrirActores(catalogo, actor):
+def descubrirActores(catalogo, actor):    
     movies = Search.getMoviesByActor(catalogo, actor)
-    try:
-        moviesNum = lt.size(movies[0])
-        director = ("", 0)
-        for key in movies[2].keys():
-            if movies[2][key] > director[1]:
-                director = (key, movies[2][key])
-    except:
-        moviesNum = 0
-        director = ("", 0)
-        print(movies[0])
-        print(movies[1])
-        print(movies[2])
-        
     
-    return (moviesNum,movies[0],movies[1],director)
+    return movies
