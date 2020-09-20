@@ -44,16 +44,10 @@
     },
 
     "production_company" : {
-        "Miramax Films" : { 
-            "movies": ["5"],  
-            "vote_average": 6.5
-        }
+        "Miramax Films" : ["5"]
     },
-        "actor" : {
-            "Tim Roth" : { 
-                "movies": ["5"],
-                "collaborations": {"Allison Anders":1},  
-                "vote_average": 6.5
-        }
+    "actor" : {
+        "Tim Roth" : ["5"]      
     }
+    
 }
