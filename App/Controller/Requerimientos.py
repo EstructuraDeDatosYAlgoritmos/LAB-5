@@ -33,5 +33,8 @@ def descubrirProductoras(catalogo, Productora):
 
 def descubrirActores(catalogo, actor):    
     movies = Search.getMoviesByActor(catalogo, actor)
-    
+    return movies
+
+def descubrirPaises(catalogo, pais):
+    movies = Search.getMoviesByCountry(catalogo, pais)
     return movies

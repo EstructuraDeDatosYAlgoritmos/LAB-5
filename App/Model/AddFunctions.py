@@ -66,9 +66,22 @@ def addActor(catalogo, movie):
             mp.put(catalogoActor, actorName, actorMovies)
         lt.addLast(actorMovies, movieId)
 
+def addCountry (catalogo, movie) :
+    countryCatalogo = catalogo["country"]
+    countryName = movie["production_countries"]
+    movieId = movie["id"]
+    
+    if mp.contains(countryCatalogo, countryName):
+        entry = mp.get(countryCatalogo, countryName)
+        countrySchema = me.getValue(entry)
+    else:
+        countrySchema = Schema.newCountry()
+        mp.put(countryCatalogo, countryName, countrySchema)
+    lt.addLast(countrySchema, movieId)
 
 def addMovie(catalogo, data: dict):
     mp.put(catalogo["movies"], data["id"], data)
     addActor(catalogo,data)
     addProductionCompany(catalogo, data)
+    addCountry(catalogo, data)
         

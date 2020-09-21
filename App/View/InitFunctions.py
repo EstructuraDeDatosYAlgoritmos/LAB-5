@@ -58,4 +58,18 @@ def ejecutarDescubrirActores(catalogo):
         print(f"\n{actorName} cuenta con {actorData[1]} peliculas y una puntuacion total de {actorData[2]}.")
         print(f"Ademas, cuenta con {actorData[3][1]} peliculas bajo la direccion de {actorData[3][0]}.")
     else:
+        print("No hay informacion de este actor")
+
+def ejecutarDescubrirPaises(catalogo):
+    countryName = input("ingrese el pais: ")
+    countryData = Req.descubrirPaises(catalogo,countryName)
+    if countryData[0]:
+        print("Han producido: \n")
+        for i in range(countryData[1]):
+            movie = lt.getElement(countryData[0], i)
+            print(f"{movie['title']}")
+            print(f"Por {movie['director_name']} en el año de {movie['release_date'][6:11]} \n")
+        print(f"\n{countryName} cuenta con {countryData[1]} peliculas y una puntuacion total de {countryData[2]}.")
+        print(f"Ademas, cuenta con {countryData[3][0]} como su mejor director con {countryData[3][0]} peliculas.")
+    else:
         print("No hay informacion de esta productora")

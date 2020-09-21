@@ -29,5 +29,6 @@ def mainMenu()->None:
     print("\nBienvenido")
     print("1- Cargar Datos")
     print("2- Descubrir productoras de cine")
-    print("3- Conocer a un actor")
+    print("4- Conocer a un actor")
+    print("6- Encontrar películas por país")
     print("0- Salir")

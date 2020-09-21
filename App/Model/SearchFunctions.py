@@ -91,3 +91,39 @@ def getMoviesByActor(catalog, actorName):
         return (actorMovies,moviesNum,actorAvg,collaborator)
         
     return (None, None, None, None)
+
+def getMoviesByCountry(catalog, countryName):
+    """
+    Retorna un autor con sus libros a partir del nombre del autor
+    """
+    countryCatalog = mp.get(catalog["country"], countryName)
+    if countryCatalog:
+        countryData = me.getValue(countryCatalog)
+
+        directorMVP = ("", 0)
+        directors = {}
+        moviesNum = lt.size(countryData)
+        countryAvg = 0.00
+
+        countryMovies = lt.newList(PARAMS["listtype"])
+        for i in range(moviesNum):
+            movie = getMovie(catalog, lt.getElement(countryData, i))
+            lt.addLast(countryMovies, movie)
+        
+            countryAvg += float(movie["vote_average"])
+            directorName = movie["director_name"]
+
+            if directorName in directors:
+                directors[directorName] += 1
+                
+            else:
+                directors[directorName] = 1
+
+            if directors[directorName] > directorMVP[1]:
+                    collaborator = (directorName, directors[directorName])
+            
+        countryAvg = round(countryAvg/moviesNum, 2)
+        
+        return (countryMovies,moviesNum,countryAvg,directorMVP)
+        
+    return (None, None, None, None)

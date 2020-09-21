@@ -51,8 +51,11 @@ def main():
             elif int(inputs[0]) == 2:  #opcion 2
                 Init.ejecutarDescubrirProductoras(catalogo)
             
-            elif int(inputs[0]) == 3:  #opcion 3
+            elif int(inputs[0]) == 4:  #opcion 3
                 Init.ejecutarDescubrirActores(catalogo)
+            
+            elif int(inputs[0]) == 6:  #opcion 3
+                Init.ejecutarDescubrirPaises(catalogo)
                 
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
