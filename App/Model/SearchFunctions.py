@@ -75,7 +75,7 @@ def getMoviesByDirector(catalog, directorName):
         
         return (directorMovies,Num,directorAvg,)
         
-    return (None, None, None, None)
+    return (None, None, None)
 
 def getMoviesByActor(catalog, actorName):
 

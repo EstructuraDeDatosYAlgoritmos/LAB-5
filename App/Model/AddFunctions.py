@@ -99,7 +99,8 @@ def addCountry (catalogo, movie) :
 
 def addMovie(catalogo, data: dict):
     mp.put(catalogo["movies"], data["id"], data)
-    addActor(catalogo,data)
+    addActor(catalogo, data)
+    addDirector(catalogo, data)
     addProductionCompany(catalogo, data)
     addCountry(catalogo, data)
         
