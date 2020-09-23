@@ -54,7 +54,7 @@ def getMoviesByCompany(catalog, companyName):
         
     return (None, None, None)
 
-def getMoviesByDirector(catalog, directorName:str):
+def getMoviesByDirector(catalog, directorName):
 
     catalogDirector = mp.get(catalog["director"], directorName)
     
