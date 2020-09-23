@@ -51,6 +51,12 @@ def iniCatalogo():
                                     loadfactor=PARAMS["loadfactor"],
                                     comparefunction=Comp.compareProductionCompanies
                                     )
+    catalogo["director"] = mp.newMap (
+                                    numelements = PARAMS["numelements"],
+                                    maptype=PARAMS["maptype"],
+                                    loadfactor=PARAMS["loadfactor"],
+                                    comparefunction=Comp.compareActors
+                                    ) 
     catalogo["actor"] = mp.newMap (
                                     numelements = PARAMS["numelements"],
                                     maptype=PARAMS["maptype"],
@@ -70,6 +76,10 @@ def iniCatalogo():
 def newProductionCompany():
     company = lt.newList(PARAMS["listtype"])
     return company
+
+def newDirector():
+    Director = lt.newList(PARAMS["listtype"])
+    return Director
 
 def newActor():
     Actor = lt.newList(PARAMS["listtype"])

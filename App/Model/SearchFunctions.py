@@ -33,9 +33,7 @@ def getMovie(catalog, movieId):
     return None
 
 def getMoviesByCompany(catalog, companyName):
-    """
-    Retorna un autor con sus libros a partir del nombre del autor
-    """
+
     catalogCompany = mp.get(catalog["production_company"], companyName)
     if catalogCompany:
         companyData = me.getValue(catalogCompany)
@@ -56,10 +54,31 @@ def getMoviesByCompany(catalog, companyName):
         
     return (None, None, None)
 
+def getMoviesByDirector(catalog, directorName:str):
+
+    catalogDirector = mp.get(catalog["director"], directorName)
+    
+    if catalogDirector:
+        directorData = me.getValue(catalogDirector)
+
+        Num = lt.size(directorData)
+        directorAvg = 0.0
+
+        directorMovies = lt.newList(PARAMS["listtype"])
+        for i in range(lt.size(directorData)):
+            movie = getMovie(catalog, lt.getElement(directorData, i))
+            lt.addLast(directorMovies, movie)
+
+            directorAvg += float(movie["vote_average"])
+
+        directorAvg =round(directorAvg/Num, 2)
+        
+        return (directorMovies,Num,directorAvg,)
+        
+    return (None, None, None, None)
+
 def getMoviesByActor(catalog, actorName):
-    """
-    Retorna un autor con sus libros a partir del nombre del autor
-    """
+
     catalogActor = mp.get(catalog["actor"], actorName)
     if catalogActor:
         actorData = me.getValue(catalogActor)
@@ -93,9 +112,7 @@ def getMoviesByActor(catalog, actorName):
     return (None, None, None, None)
 
 def getMoviesByCountry(catalog, countryName):
-    """
-    Retorna un autor con sus libros a partir del nombre del autor
-    """
+
     countryCatalog = mp.get(catalog["country"], countryName)
     if countryCatalog:
         countryData = me.getValue(countryCatalog)
