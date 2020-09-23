@@ -47,21 +47,16 @@ def addProductionCompany (catalogo, movie) :
 
 def addDirector(catalogo, movie):
     catalogoDirector = catalogo["director"]
-
+    directorName = movie["director_name"]
     movieId = movie["id"]
-    directors = lt.newList('ARRAY_LIST')
-    lt.addLast(directors,movie["director_name"]) 
     
-    
-    for i in range(lt.size(directors)):
-        directorName = lt.getElement(directors, i)
-        if mp.contains(catalogoDirector, directorName):
-            entry = mp.get(catalogoDirector, directorName)
-            directorMovies = me.getValue(entry)
-        else:
-            directorMovies = Schema.newDirector()
-            mp.put(catalogoDirector, directorName, directorMovies)
-        lt.addLast(directorMovies, movieId)
+    if mp.contains(catalogoDirector, directorName):
+        entry = mp.get(catalogoDirector, directorName)
+        directorMovies = me.getValue(entry)
+    else:
+        directorMovies = Schema.newDirector()
+        mp.put(catalogoDirector, directorName, directorMovies)
+    lt.addLast(directorMovies, movieId)
 
 def addActor(catalogo, movie):
     catalogoActor = catalogo["actor"]

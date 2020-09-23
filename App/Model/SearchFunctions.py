@@ -73,7 +73,7 @@ def getMoviesByDirector(catalog, directorName):
 
         directorAvg =round(directorAvg/Num, 2)
         
-        return (directorMovies,Num,directorAvg,)
+        return (directorMovies,Num,directorAvg)
         
     return (None, None, None)
 
