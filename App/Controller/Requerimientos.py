@@ -26,22 +26,49 @@ from App.Model import SearchFunctions as Search
 from DISClib.ADT import list as lt
 from DISClib.ADT import map as mp
 from DISClib.DataStructures import mapentry as me
+from time import process_time as crono
 
 def descubrirProductoras(catalogo, Productora):
+    startCrono = crono()  #tiempo inicial
+
     movies = Search.getMoviesByCompany(catalogo, Productora)
+    
+    stopCrono = crono()  #tiempo final
+    print("Tiempo de ejecución ", stopCrono - startCrono, " segundos")
     return movies
 
-def descubrirDirectores(catalogo, director):    
+def descubrirDirectores(catalogo, director):
+    startCrono = crono()  #tiempo inicial
+
     movies = Search.getMoviesByDirector(catalogo, director)
+ 
+    stopCrono = crono()  #tiempo final
+    print("Tiempo de ejecución ", stopCrono - startCrono, " segundos")   
     return movies
 
-def descubrirActores(catalogo, actor):    
+def descubrirActores(catalogo, actor):
+    startCrono = crono()  #tiempo inicial
+
     movies = Search.getMoviesByActor(catalogo, actor)
+    
+    stopCrono = crono()  #tiempo final
+    print("Tiempo de ejecución ", stopCrono - startCrono, " segundos")
     return movies
 
 def descubrirGeneros(catalogo, genero):
+    startCrono = crono()  #tiempo inicial
+
     movies = Search.getMoviesByGenre(catalogo, genero)
+    
+    stopCrono = crono()  #tiempo final
+    print("Tiempo de ejecución ", stopCrono - startCrono, " segundos")
+    return movies
 
 def descubrirPaises(catalogo, pais):
+    startCrono = crono()  #tiempo inicial
+
     movies = Search.getMoviesByCountry(catalogo, pais)
+    
+    stopCrono = crono()  #tiempo final
+    print("Tiempo de ejecución ", stopCrono - startCrono, " segundos")
     return movies
