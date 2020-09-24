@@ -111,6 +111,26 @@ def getMoviesByActor(catalog, actorName):
         
     return (None, None, None, None)
 
+def getMoviesByGenre(catalog, genre):
+    catalogGenre = mp.get(catalog['genre'], genre)
+    if catalogGenre:
+        genreData = me.getValue(catalogGenre)
+
+        moviesNum = lt.size(genreData)
+        genreAvg = 0.00
+
+        genreMovies = lt.newList(PARAMS["listtype"])
+        for i in range(moviesNum):
+            movie = getMovie(catalog, lt.getElement(genreData, i))
+            lt.addLast(genreMovies, movie)
+            genreAvg += float(movie['vote_count'])
+        
+        genreAvg = round(genreAvg/moviesNum,2)
+        return (genreMovies, moviesNum, genreAvg)
+    return (None,None, None)
+
+
+
 def getMoviesByCountry(catalog, countryName):
 
     countryCatalog = mp.get(catalog["country"], countryName)

@@ -68,6 +68,17 @@ def compareActors(id, entry):
         return 1
     else:
         return - 1
+    
+def compareGenres(id, entry):
+    
+    identry = me.getKey(entry)
+    if (id == identry):
+        return 0
+    elif (id > identry):
+        return 1
+    else:
+        return - 1
+
         
 def compareCountries(id, entry):
 
