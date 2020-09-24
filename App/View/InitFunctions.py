@@ -73,6 +73,18 @@ def ejecutarDescubrirActores(catalogo):
     else:
         print("No hay informacion de este actor")
 
+def ejecutarDescubirGeneros(catalogo):
+    genre = input('Ingrese el genero de interes: ')
+    genreData = Req.descubrirGeneros(catalogo, genre)
+    if genreData[0]:
+        print('Lo generos son: \n')
+        for i in range(genreData[1]):
+            movie = lt.getElement(genreData[0], i)
+            print(f'{movie['title']}')
+        print(f"Con una puntuacion de {movie['vote_average']} por {movie['director_name']} \n")
+        print(f'\n En el genero {genre} se encuentran las peliculas {genreData[0]} que en total son {genreData[1]} peliculas y un promedio de {genreData[2]} ')
+    else:
+        print('No hay informacion de este genero')
 def ejecutarDescubrirPaises(catalogo):
     countryName = input("ingrese el pais: ")
     countryData = Req.descubrirPaises(catalogo,countryName)

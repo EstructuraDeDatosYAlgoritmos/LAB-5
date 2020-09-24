@@ -79,6 +79,20 @@ def addActor(catalogo, movie):
             mp.put(catalogoActor, actorName, actorMovies)
         lt.addLast(actorMovies, movieId)
 
+def addGenre(catalogo, movie):
+    catalogoGenre = catalogo['genre']
+    genre = movie['genre']
+    movieId = movie['id']
+    if mp.contains(genreCatalogo, genre):
+        entry = mp.get(genreCatalogo, genre)
+        genreSchema = me.getValue(entry)
+    else:
+        genreSchema = Schema.newGenre()
+        mp.put(genreCatalogo, genre, genreSchema )
+    lt.addLast(genreSchema, movieId)
+
+
+
 def addCountry (catalogo, movie) :
     countryCatalogo = catalogo["country"]
     countryName = movie["production_countries"]
