@@ -39,6 +39,9 @@ def descubrirActores(catalogo, actor):
     movies = Search.getMoviesByActor(catalogo, actor)
     return movies
 
+def descubrirGeneros(catalogo, genero):
+    movies = Search.getMoviesByGenre(catalogo, genero)
+
 def descubrirPaises(catalogo, pais):
     movies = Search.getMoviesByCountry(catalogo, pais)
     return movies
