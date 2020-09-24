@@ -31,5 +31,6 @@ def mainMenu()->None:
     print("2- Descubrir productoras de cine")
     print("3- Conocer a un director")
     print("4- Conocer a un actor")
+    print("5- Conocer un genero")
     print("6- Encontrar películas por país")
     print("0- Salir")

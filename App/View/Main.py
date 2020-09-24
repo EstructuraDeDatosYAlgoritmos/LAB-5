@@ -57,6 +57,9 @@ def main():
             elif int(inputs[0]) == 4:  #opcion 4
                 Init.ejecutarDescubrirActores(catalogo)
             
+            elif int(inputs[0]) == 5:
+                Init.ejecutarDescubirGeneros(catalogo)
+            
             elif int(inputs[0]) == 6:  #opcion 6
                 Init.ejecutarDescubrirPaises(catalogo)
                 
