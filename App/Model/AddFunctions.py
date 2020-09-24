@@ -93,7 +93,6 @@ def addGenre(catalogo, movie):
         lt.addLast(genreSchema, movieId)
 
 
-
 def addCountry (catalogo, movie) :
     countryCatalogo = catalogo["country"]
     countryName = movie["production_countries"]
